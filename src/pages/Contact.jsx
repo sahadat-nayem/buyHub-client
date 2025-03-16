@@ -1,14 +1,11 @@
-
-
 const Contact = () => {
   return (
     <div className="container mx-auto p-4">
-        {/* Page Title */}
-      <h1 className=""> </h1>
+      {/* Page Title */}
       <a className="lg:relative lg:left-[520px] text-3xl mt-20 font-bold text-center mb-6 flex items-center gap-0">
-            <span>Contact</span>
-            <span className="text-blue-500">Us</span>
-          </a>
+        <span>Contact</span>
+        <span className="text-blue-500">Us</span>
+      </a>
 
       {/* Google Map Section */}
       <div className="w-full h-96">
@@ -26,15 +23,16 @@ const Contact = () => {
         <div className="bg-gray-100 p-6 rounded-lg shadow-md">
           <h2 className="text-2xl font-semibold mb-4">Contact Info</h2>
           <p className="mb-2">
-            <strong>Phone:</strong> +012 345 678 102 <br /> +012 345 678 203
+            <strong>Phone:</strong> +8801612844066 <br /> +012 345 678 203
           </p>
           <p className="mb-2">
-            <strong>Email:</strong> email@here.com <br />
-            your@email.here
+            <strong>Email:</strong> BuyHub-spot@gmail.com
+            <br />
+            sahadatnayem333@gmail.com
           </p>
           <p className="mb-2">
-            <strong>Address:</strong> Address goes here, <br />
-            Street, Crossroad 123.
+            <strong>Address:</strong> Gulsan 123, <br />
+            Dhaka, Bangladesh.
           </p>
         </div>
 
