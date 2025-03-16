@@ -1,11 +1,13 @@
 import { Link, NavLink } from "react-router-dom";
 import { HiMiniShoppingCart } from "react-icons/hi2";
 import { useEffect, useState } from "react";
-import userIcon from "../assets/user-removebg-preview.png";
 import { FaHome, FaSearch } from "react-icons/fa";
 import { FaLocationDot } from "react-icons/fa6";
 import { MdOutlineProductionQuantityLimits } from "react-icons/md";
 import { IoClose } from "react-icons/io5"; // Cross Icon
+import { FcAbout } from "react-icons/fc";
+import { CgDetailsMore } from "react-icons/cg";
+import { BiSolidContact, BiSolidMessageDetail } from "react-icons/bi";
 
 const Navbar = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -40,8 +42,11 @@ const Navbar = () => {
       >
         <div className="navbar-start">
           {/* Sidebar Toggle Button */}
-          <button onClick={toggleSidebar} className="btn btn-ghost text-xl lg:text-2xl">
-            {isSidebarOpen ? <IoClose /> : "☰"}
+          <button
+            onClick={toggleSidebar}
+            className="btn btn-ghost text-xl lg:text-2xl"
+          >
+            {isSidebarOpen ? <IoClose /> : <CgDetailsMore />}
           </button>
           <a className="lg:relative lg:left-[520px] text-2xl font-bold flex items-center gap-0">
             <span>Buy</span>
@@ -110,20 +115,44 @@ const Navbar = () => {
 
         {/* Sidebar Links */}
         <div className="flex flex-col space-y-4 mt-5 px-5">
-          <NavLink className="flex items-center gap-1 hover:text-yellow-400 font-semibold" to="/">
+          <NavLink
+            className="flex items-center gap-1 hover:text-yellow-400 font-semibold"
+            to="/"
+            onClick={toggleSidebar} // Sidebar Hide on Click
+          >
             <FaHome /> Home
           </NavLink>
-          <NavLink className="flex items-center gap-1 hover:text-yellow-400 font-semibold" to="/products">
+
+          <NavLink
+            className="flex items-center gap-1 hover:text-yellow-400 font-semibold"
+            to="/products"
+            onClick={toggleSidebar} // Sidebar Hide on Click
+          >
             <MdOutlineProductionQuantityLimits /> PRODUCTS
           </NavLink>
-          <NavLink className="hover:text-yellow-400 font-semibold" to="/dashboard">
+
+          <NavLink
+            className="hover:text-yellow-400 font-semibold"
+            to="/dashboard"
+            onClick={toggleSidebar} // Sidebar Hide on Click
+          >
             DASHBOARD
           </NavLink>
-          <NavLink className="hover:text-yellow-400 font-semibold" to="/menu">
-            Our Menu
+
+          <NavLink
+            className="flex items-center gap-1 hover:text-yellow-400 font-semibold"
+            to="/menu"
+            onClick={toggleSidebar} // Sidebar Hide on Click
+          >
+            <BiSolidMessageDetail /> About Us
           </NavLink>
-          <NavLink className="hover:text-yellow-400 font-semibold" to="/contact">
-            CONTACT us
+
+          <NavLink
+            className="flex items-center gap-1 hover:text-yellow-400 font-semibold"
+            to="/contact"
+            onClick={toggleSidebar} // Sidebar Hide on Click
+          >
+            <BiSolidContact /> CONTACT us
           </NavLink>
         </div>
       </div>
