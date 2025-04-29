@@ -1,15 +1,29 @@
 import { Link, NavLink } from "react-router-dom";
 import { HiMiniShoppingCart } from "react-icons/hi2";
-import { useEffect, useState } from "react";
+import userIcon from "../assets/user-removebg-preview.png";
+import { useContext, useEffect, useState } from "react";
 import { FaHome, FaSearch } from "react-icons/fa";
 import { FaLocationDot } from "react-icons/fa6";
 import { MdOutlineProductionQuantityLimits } from "react-icons/md";
 import { IoClose } from "react-icons/io5"; // Cross Icon
-import { FcAbout } from "react-icons/fc";
 import { CgDetailsMore } from "react-icons/cg";
 import { BiSolidContact, BiSolidMessageDetail } from "react-icons/bi";
+import { AuthContext } from "../provider/AuthProvider";
 
 const Navbar = () => {
+  const { user, signOutUser } = useContext(AuthContext);
+  // const [isAdmin] = useAdmin();
+
+  const handleLogOut = () => {
+    signOutUser()
+      .then(() => {
+        // console.log("Logged Out");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [isNavbarVisible, setIsNavbarVisible] = useState(true);
   let lastScrollY = window.scrollY;
@@ -17,9 +31,9 @@ const Navbar = () => {
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > lastScrollY) {
-        setIsNavbarVisible(false); // Scroll down → Navbar hide
+        setIsNavbarVisible(false);
       } else {
-        setIsNavbarVisible(true); // Scroll up → Navbar show
+        setIsNavbarVisible(true);
       }
       lastScrollY = window.scrollY;
     };
@@ -48,17 +62,19 @@ const Navbar = () => {
           >
             {isSidebarOpen ? <IoClose /> : <CgDetailsMore />}
           </button>
-          <a className="lg:relative lg:left-[520px] text-2xl font-bold flex items-center gap-0">
-            <span>Buy</span>
-            <span className="text-blue-500">Hub</span>
-          </a>
+          <Link to="/">
+            <a className="lg:relative lg:left-[520px] text-2xl font-bold flex items-center gap-0">
+              <span>Buy</span>
+              <span className="text-blue-500">Hub</span>
+            </a>
+          </Link>
         </div>
 
         <div className="navbar-end gap-3">
           <Link to="/dashboard/cart" className="relative bg-none lg:mr-5">
             <FaSearch />
           </Link>
-          <Link to="/dashboard/cart" className="relative bg-none lg:mr-5">
+          <Link to="/location" className="relative bg-none lg:mr-5">
             <FaLocationDot />
           </Link>
           <Link to="/dashboard/cart" className="relative bg-none lg:mr-5">
@@ -68,20 +84,30 @@ const Navbar = () => {
             </div> */}
           </Link>
 
-          {/* {user && user?.email ? (
-            <button onClick={logOut} className="hover:text-yellow-400 font-semibold">
+          {user && user?.email ? (
+            <button
+              onClick={handleLogOut}
+              className="hover:text-white font-semibold"
+            >
               Log Out
             </button>
           ) : (
-            <NavLink to="/login" className="hover:text-yellow-400 font-semibold pr-5">
+            <NavLink
+              to="/login"
+              className="hover:text-white font-semibold pr-5"
+            >
               Login
             </NavLink>
-          )} */}
+          )}
 
-          {/* <div>
+          <div>
             {user && user?.email ? (
               <div className="group relative lg:hidden">
-                <img className="size-12 rounded-full border-2 to-blue-900" src={user?.photoURL} alt="" />
+                <img
+                  className="size-12 rounded-full border-2 to-blue-900"
+                  src={user?.photoURL}
+                  alt=""
+                />
                 <span className="absolute bottom-0 left-0 right-0 font-semibold bg-gray-100 text-black text-center opacity-0 group-hover:opacity-100">
                   {user?.displayName}
                 </span>
@@ -89,7 +115,7 @@ const Navbar = () => {
             ) : (
               <img className="size-10" src={userIcon} />
             )}
-          </div> */}
+          </div>
         </div>
       </div>
 
