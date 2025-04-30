@@ -151,7 +151,7 @@ const Navbar = () => {
 
           <NavLink
             className="flex items-center gap-1 hover:text-yellow-400 font-semibold"
-            to="/products"
+            to="/product"
             onClick={toggleSidebar} // Sidebar Hide on Click
           >
             <MdOutlineProductionQuantityLimits /> PRODUCTS

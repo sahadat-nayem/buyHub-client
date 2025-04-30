@@ -15,7 +15,7 @@ const Slide = ({ image, text }) => {
                         {text}
                     </h1>
                     <br />
-                    <Link to="/">
+                    <Link to="/product">
                         <button className='px-5 py-4 mt-4 text-sm font-medium text-white capitalize transition-colors duration-300 transform bg-blue-500 rounded-md lg:w-auto hover:bg-blue-400 focus:outline-none focus:bg-blue-400'>
                             View All Products
                         </button>
