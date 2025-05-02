@@ -1,13 +1,14 @@
 import { useContext, useEffect, useState } from "react";
 import { HiMiniShoppingCart } from "react-icons/hi2";
 import { AuthContext } from "../provider/AuthProvider";
+import Swal from "sweetalert2";
 
 const AllProduct = () => {
   const { user } = useContext(AuthContext);
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/product") // তোমার প্রোডাক্ট API
+    fetch("http://localhost:5000/product")
       .then((res) => res.json())
       .then((data) => setProducts(data));
   }, []);
@@ -18,8 +19,7 @@ const AllProduct = () => {
       name: product.name,
       image: product.image,
       price: product.price,
-      size: "S",
-      color: "Red",
+      category: product.category,
       userEmail: user?.email,
     };
 
@@ -27,7 +27,21 @@ const AllProduct = () => {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(cartItem),
-    });
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.insertedId) {
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "Product added!",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+          const event = new CustomEvent("cart-updated");
+          window.dispatchEvent(event);
+        }
+      });
   };
 
   return (
@@ -41,15 +55,18 @@ const AllProduct = () => {
             <img
               src={product.image}
               alt={product.name}
-              className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+              className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
             />
           </div>
-
           <div className="p-4">
-            <h2 className="text-lg font-semibold text-gray-800">{product.name}</h2>
+            <h2 className="text-lg font-semibold text-gray-800">
+              {product.name}
+            </h2>
             <p className="text-sm text-gray-500">{product.category}</p>
             <div className="flex justify-between items-center mt-3">
-              <span className="text-xl font-bold text-green-600">${product.price}</span>
+              <span className="text-xl font-bold text-green-600">
+                ${product.price}
+              </span>
               <button
                 onClick={() => handleAddToCart(product)}
                 className="px-3 py-1 rounded-full text-white bg-blue-500 flex items-center gap-1"
