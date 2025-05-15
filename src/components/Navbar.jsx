@@ -5,7 +5,7 @@ import { useContext, useEffect, useState } from "react";
 import { FaHome, FaSearch } from "react-icons/fa";
 import { FaLocationDot } from "react-icons/fa6";
 import { MdOutlineProductionQuantityLimits } from "react-icons/md";
-import { IoClose } from "react-icons/io5";
+import { IoBagAddSharp, IoClose } from "react-icons/io5";
 import { CgDetailsMore } from "react-icons/cg";
 import { BiSolidContact, BiSolidMessageDetail } from "react-icons/bi";
 import { AuthContext } from "../provider/AuthProvider";
@@ -156,11 +156,11 @@ const Navbar = () => {
             <MdOutlineProductionQuantityLimits /> Products
           </NavLink>
           <NavLink
-            to="/dashboard"
+            to="/addProduct"
             onClick={toggleSidebar}
             className="flex gap-1 items-center hover:text-black"
           >
-            Dashboard
+           <IoBagAddSharp /> Add Product
           </NavLink>
           <NavLink
             to="/about"

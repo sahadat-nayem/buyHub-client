@@ -14,6 +14,7 @@ import SignUp from "./pages/SignUp";
 import Location from "./pages/Location";
 import AllProduct from "./pages/AllProduct";
 import { ToastContainer } from "react-toastify";
+import AddProduct from "./pages/AddProduct";
 
 const router = createBrowserRouter([
   {
@@ -28,6 +29,10 @@ const router = createBrowserRouter([
       {
         path: "product",
         element: <AllProduct></AllProduct>
+      },
+      {
+        path: "addProduct",
+        element: <AddProduct></AddProduct>
       },
       {
         path: "contact",
