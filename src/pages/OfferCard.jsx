@@ -35,7 +35,7 @@ const OfferCard = () => {
         <div className="absolute w-24 h-24 bg-gray-300 rounded-full top-8 left-10 opacity-50 z-0"></div>
         <div className="absolute w-36 h-36 bg-gray-300 rounded-full bottom-[-20px] right-12 opacity-50 z-0"></div>
 
-        <div className="absolute top-4 left-4 bg-orange-500 text-white text-sm px-3 py-1 rounded-full font-bold z-10">
+        <div className="absolute top-4 right-4 bg-orange-500 text-white text-sm px-3 py-1 rounded-full font-bold z-10">
           UP TO 50% OFF
         </div>
 

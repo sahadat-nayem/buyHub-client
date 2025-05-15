@@ -71,7 +71,7 @@ const Navbar = () => {
 
         <div className="navbar-end gap-8 ">
           <div className="flex gap-3">
-            <Link to="/dashboard/cart">
+            <Link to="/product">
               <FaSearch />
             </Link>
             <Link to="/location">
